@@ -150,30 +150,47 @@ than 1
 
 
 function TOH(num, source, temp, destination ){
-    if(num === 1){
-        print(source, destination) // if only one disk, move A -> C
-    }
-    // if num = 2
-    // move A -> B
-    //      A -> C
-    //      B -> C
-    if( num === 2 ) {
-        TOH(num-1, source, destination, temp ) // `Moving from source to temporary (A -> B)`
-        TOH(num-1, source, temp, destination) // `Moving from source to destination (A -> C)
-        TOH(num-1, temp, source, destination)   // Moving from temporary to destination (B -> C)
-    }
-    if ( num === 3 ){
-        TOH(num-2, source, temp, destination) // A -> C
-        TOH(num-2, source, destination, temp) // A -> B
-        TOH(num-2, destination, source, temp) // C -> B
-        TOH(num-2, source, temp, destination) // A -> C
-        TOH(num-2, temp, destination, source) // B -> A
-        TOH(num-2, temp, source, destination) // B -> C
-        TOH(num-2, source, temp, destination) // A -> C
-    }
+  if(num === 1){
+    print(source, destination); // if only one disk, move A -> C
+  }
+  // if num = 2
+  // move A -> B
+  //      A -> C
+  //      B -> C
+  if( num === 2 ) {
+    TOH(num-1, source, destination, temp ); // `Moving from source to temporary (A -> B)`
+    TOH(num-1, source, temp, destination);
+    TOH(num-1, temp, source, destination); // `Moving from source to destination (A -> C)
+    //TOH(num-1, temp, source, destination);   // Moving from temporary to destination (B -> C)
+  }
+  if ( num === 3 ){
+
+    TOH(num-1, source, destination, temp);
+    TOH(num-2, source, temp, destination);
+    TOH(num-1, temp, source, destination);
+    // TOH(num-2, source, temp, destination); // A -> C
+    // TOH(num-2, source, destination, temp); // A -> B
+    // TOH(num-2, destination, source, temp); // C -> B
+    // TOH(num-2, source, temp, destination); // A -> C
+    // TOH(num-2, temp, destination, source); // B -> A
+    // TOH(num-2, temp, source, destination); // B -> C
+    // TOH(num-2, source, temp, destination); // A -> C
+  }
+
+  if (num===4) {
+    TOH(num-1, source, destination, temp);
+    TOH(num-3, source, temp, destination);
+    TOH(num-1, temp, source, destination); 
+  }
+
+  if (num===5) {
+    TOH(num-1, source, destination, temp);
+    TOH(num-4, source, temp, destination);
+    TOH(num-1, temp, source, destination); 
+  }
 }
 function print(source, dest){
-    console.log(`Moving from ${source} to ${dest}`);
+  console.log(`Moving from ${source} to ${dest}`);
 }
 
-console.log(TOH(3, 'A', 'B', 'C'));
+console.log(TOH(5, 'A', 'B', 'C'));
