@@ -71,24 +71,24 @@ O(n^2)
 
 // 7
 
-function compute(num) {
-  let result = [];
-  for (let i = 1; i <= num; i++) {
+// function compute(num) {
+//   let result = [];
+//   for (let i = 1; i <= num; i++) {
 
-    if (i === 1) {
-      result.push(0);
-    }
-    else if (i == 2) {
-      result.push(1);
-    }
-    else {
-      result.push(result[i - 2] + result[i - 3]);
-    }
-  }
-  return result;
-}
+//     if (i === 1) {
+//       result.push(0);
+//     }
+//     else if (i == 2) {
+//       result.push(1);
+//     }
+//     else {
+//       result.push(result[i - 2] + result[i - 3]);
+//     }
+//   }
+//   return result;
+// }
 
-console.log(compute(8));
+// console.log(compute(8));
 
 /*
 O(n)
@@ -147,3 +147,33 @@ O(n)
 The for loops n number of times, as long as n is greater
 than 1
  */
+
+
+function TOH(num, source, temp, destination ){
+    if(num === 1){
+        print(source, destination) // if only one disk, move A -> C
+    }
+    // if num = 2
+    // move A -> B
+    //      A -> C
+    //      B -> C
+    if( num === 2 ) {
+        TOH(num-1, source, destination, temp ) // `Moving from source to temporary (A -> B)`
+        TOH(num-1, source, temp, destination) // `Moving from source to destination (A -> C)
+        TOH(num-1, temp, source, destination)   // Moving from temporary to destination (B -> C)
+    }
+    if ( num === 3 ){
+        TOH(num-2, source, temp, destination) // A -> C
+        TOH(num-2, source, destination, temp) // A -> B
+        TOH(num-2, destination, source, temp) // C -> B
+        TOH(num-2, source, temp, destination) // A -> C
+        TOH(num-2, temp, destination, source) // B -> A
+        TOH(num-2, temp, source, destination) // B -> C
+        TOH(num-2, source, temp, destination) // A -> C
+    }
+}
+function print(source, dest){
+    console.log(`Moving from ${source} to ${dest}`);
+}
+
+console.log(TOH(3, 'A', 'B', 'C'));
