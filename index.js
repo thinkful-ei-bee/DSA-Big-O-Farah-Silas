@@ -193,6 +193,11 @@ function print(source, dest){
   console.log(`Moving from ${source} to ${dest}`);
 }
 
+
+
+
+// Counting Sheep 
+// O(n)
 function countingSheep(sheep) {
 
   let i = sheep;
@@ -203,6 +208,8 @@ function countingSheep(sheep) {
   console.log('All the sheep have jumped over the fence.');
 }
 
+// Power Calc
+// O(n)
 function powerCalc(base, exp) {
   for (let i = 1; i < exp; i++) {
     base *= base; 
@@ -211,6 +218,9 @@ function powerCalc(base, exp) {
   console.log(base);
 }
 
+
+// Reverse String
+// O(n)
 function reverseString(word) {
 
   let reversedWord = '';
@@ -222,3 +232,95 @@ function reverseString(word) {
 }
 
 reverseString('dog');
+
+
+
+// Triangular number
+// O(n)
+function triangularNumber(n) {
+    let dots = 0;
+    for (let i = n; i >= 0; i--) {
+        dots += i;
+    }
+    console.log(dots);
+}
+
+triangularNumber(4);
+
+
+// String splitter
+// O(n)
+function stringSplitter(string){
+    let newString = ''
+    for(let i = 0; i < string.length; i++) {
+        if (string[i] !== '/') {
+            newString += string[i];
+        }  
+    }
+    console.log(newString);
+}
+
+stringSplitter('20/20/2020');
+
+
+// Fibonacci
+// O(n)
+function fibonacci(num){
+    let fibSequence = [];
+    for(let i = 1; i <= num; i++){
+        if (i === 1) {
+            fibSequence.push(0);
+        }
+        else if(i === 2) {
+            fibSequence.push(1);
+        }
+        else{
+            fibSequence.push(fibSequence[(i - 2)] + fibSequence[(i - 3)]); 
+        }
+    }
+    console.log(fibSequence);
+}
+
+fibonacci(10);
+
+
+// Factorial 
+// O(n)
+function factorial(num){
+    let factorial = 1;
+    for (let i = num; i > 0; i--){
+        factorial *= i;
+    }
+    console.log(factorial);
+}
+
+factorial(4);
+
+
+
+
+// Time complexities of recursive solutions
+
+// 1. Counting sheep: O(n)
+
+// 2. Calculator: O(n)
+
+// 3. Reverse string: O(n)
+
+// 4. Triangular num: O(n)
+
+// 5. String splitter: O(n)
+
+// 6. Factorial: O(n)
+
+// 7. Fibonacci: O(n)
+
+// 8 . Maze: O(n) 
+
+// 9. Maze2: O(nlog(n)) 
+
+// 10. Anagram: o(n^2)
+
+// 11. Chart: 
+
+// 12. Binary: O(n)
