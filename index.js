@@ -193,4 +193,32 @@ function print(source, dest){
   console.log(`Moving from ${source} to ${dest}`);
 }
 
-console.log(TOH(5, 'A', 'B', 'C'));
+function countingSheep(sheep) {
+
+  let i = sheep;
+  while(i > 0) {
+    console.log(`${i}: Another sheep jumps over the fence.`);
+    i--;
+  }
+  console.log('All the sheep have jumped over the fence.');
+}
+
+function powerCalc(base, exp) {
+  for (let i = 1; i < exp; i++) {
+    base *= base; 
+  }
+
+  console.log(base);
+}
+
+function reverseString(word) {
+
+  let reversedWord = '';
+
+  for (let i = word.length - 1; i >= 0; i--) {
+    reversedWord += word[i];
+  }
+  console.log(reversedWord);
+}
+
+reverseString('dog');
